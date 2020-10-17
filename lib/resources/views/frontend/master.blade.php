@@ -45,14 +45,26 @@
 						</a></nav>			
 					</h1>
 				</div>
-				<div id="search" class="col-md-7 col-sm-12 col-xs-12">
-					<input type="text" name="text" value="Nhập từ khóa ...">
-					<input type="submit" name="submit" value="Tìm Kiếm">
+				<div class="col-xs-6 col-sm-6 col-md-7">
+					<div id="search-bar" class="col-md-12 col-sm-12 col-xs-12 col-md-offset-1">
+						<form role="search" class="navbar-form" method="get" action="{{asset('search/')}}">
+							<div class="input-group">
+								<div class="input-group-btn">
+									<input type="text" class="form-control" name="result" placeholder="Search">
+								</div>
+								<div class="input-group-btn">
+									<button type="submit" class="btn btn-default">Tìm kiếm</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					
 				</div>
 				<div id="cart" class="col-md-2 col-sm-12 col-xs-12">
 					<a class="display" href="#">Giỏ hàng</a>
 					<a href="#">6</a>				    
 				</div>
+
 			</div>			
 		</div>
 	</header><!-- /header -->
@@ -67,7 +79,7 @@
 						<ul>
 							<li class="menu-item">danh mục sản phẩm</li>
 							@foreach($catelist as $cate)
-							<li class="menu-item"><a href="#" title="">{{$cate->cate_name}}</a></li>		
+							<li class="menu-item"><a href="{{asset('category/'.$cate->cate_id.'/'.$cate->cate_slug)}}" title="">{{$cate->cate_name}}</a></li>		
 							@endforeach
 						</ul>
 						<!-- <a href="#" id="pull">Danh mục</a> -->

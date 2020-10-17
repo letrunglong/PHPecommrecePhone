@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\Support\Str;
 
 class FrontendController extends Controller
 {
@@ -24,5 +25,20 @@ class FrontendController extends Controller
         // $data['catelist'] = Category::all(); Đã viết hàm chung trong providers
         $data['item'] =Product::find($id);
         return view('frontend.details',$data);
+    }
+    public function getCategory($id){
+        $data['items'] = Product::where('prod_cate',$id)->orderBy('prod_id','desc')->paginate(8);
+        $data['cate'] = Category::find($id);
+        return view('frontend.category',$data);
+    }
+
+    //search
+
+    public function getSearch(Request $request){
+        $result = $request->result;
+        $result = Str::replaceArray(' ',['%'],$result);
+        $data['product'] = Product::where('prod_name','like','%'.$result.'%')->get();
+
+        return view('frontend.search',$data);
     }
 }
