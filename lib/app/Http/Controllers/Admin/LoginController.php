@@ -43,6 +43,5 @@ class LoginController extends Controller
         //     //  dd('Đăng nhập thất bại');
         //     return back()->withInput()->with('error','Tài khoản hoặc mật khẩu chưa chính xác');
         // }
-       
     }
 }

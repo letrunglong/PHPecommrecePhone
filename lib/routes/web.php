@@ -30,6 +30,12 @@ Route::group(['namespace'=>'Admin'],function(){
 
         
     });
+    Route::group(['prefix'=>'register'],function(){
+        Route::get('/','RegisController@getRegis');
+        Route::post('/','RegisController@postRegis');
+
+        
+    });
     Route::get('logout','HomeController@getLogout');
     Route::group(['prefix'=>'admin'],function(){
         Route::get('home','HomeController@getHome');
