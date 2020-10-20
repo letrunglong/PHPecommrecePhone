@@ -17,13 +17,21 @@ class Regiscontroller extends Controller
         $name = $request ->input("name");
         $email = $request ->input("email");
         $password = $request ->input("password");
+        $repassword = $request ->input("repassword");
         $user = User::where('email',$email)->first();
 
         if($user){
             return back()->withInput()->with('error','Email này đã tồn tại');
         }
-        if($email =='' || $name =='' || $password==''){
+
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+            return back()->withInput()->with('error','Email không đúng định dạng');
+        }
+        if($email =='' || $name =='' || $password==''|| $repassword==''){
             return back()->withInput()->with('error','Các trường không đươc để trống');
+        }
+        else if($password != $repassword){
+            return back()->withInput()->with('error','Nhập lại mật khẩu không đúng');
         }
         else{
             $userr = new User;

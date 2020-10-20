@@ -38,7 +38,11 @@
 								<input class="form-control" placeholder="Password" name="password" type="password" value="">
 							</div>
 							<div class="form-group">
+								<input class="form-control" placeholder="Retype-Password" name="repassword" type="password" value="">
+							</div>
+							<div class="form-group">
 							<button type="submit" name ="Register" class="btn btn-primary">Register</button>
+							<a href="{{asset('login')}}" class="btn btn-primary">Back to Login</a>
 							</div>
 						</fieldset>
 					</form>
